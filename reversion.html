@@ -1,0 +1,121 @@
+<html>
+	<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+
+	<title>Fluency Studios</title>		
+		<link href="css/fluency_styles.css" rel="stylesheet" type="text/css">
+		<link href="css/overlay.css" rel="stylesheet" type="text/css">
+		<script src="js/jquery.min.js"></script>
+	</head>
+
+	<body>
+		<div id="film-page">
+			<!-- Header with Navigation -->
+			<div id="header">		
+				<a href="/"><img src="images/fluency_site.jpg"></a>
+				<div id="main-menu">			
+					<a id="link-contact" href="contact.html">contact</a>
+				</div>					
+			</div>
+			<div id="title">
+				<div><span class="film-title">Reversion &nbsp;</span><span class="film-year">2015</span></div>
+			</div>
+			<div id="main-content">
+				<div id="movie-banner">	
+					<img  width="97%" src="images/reversion_film_page.jpg">
+				</div>						
+				<div id="social-networks">	
+					<ul id="social-networks-menu">
+						<li><a href="https://www.facebook.com/reversionfilm"><img src="images/Social-FB.png"></img></a></li>
+						<!--<li><a href="#"><img src="images/Social-GP.jpg"></img></a></li>
+						<li><a href="#"><img src="images/Social-IN.png"></img></a></li>
+						<li><a href="#"><img src="images/Social-TW.png"></img></a></li>
+						<li><a href="#"><img src="images/Social-YT.png"></img></a></li>-->
+					</ul> 				
+				</div>
+				
+				<div id="movie-trailer">	
+					<div id="overlay-inAbox" class="overlay">
+					  <div class="toolbar"><a class="close" href="#"><span>x</span> close</a></div>
+					  <div class="wrapper">
+							<div>						 
+								<iframe id="player_frame" src="https://player.vimeo.com/video/139028481 " width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+							</div>
+					  </div>
+					</div> 	 				
+					<p><a id="overlaylaunch" href="#" class="button">Watch the Trailer</a></p>
+					<p><b>NOW AVAILABLE</b>: <a id="sociallinks" href="https://itunes.apple.com/us/movie/reversion/id1070447133" class="button">iTunes</a>
+											 <a id="sociallinks" href="https://amzn.com/B01ACI82V8" class="button">Amazon</a>
+											 <a id="sociallinks" href="https://play.google.com/store/movies/details/Reversion?id=sIaFKwHSFhA" class="button">Google</a></p>						
+				</div>
+				
+			
+				
+				<div id="movie-content">
+					<p><b>Title</b>: Reversion</p>
+					<p><b>Synopsis</b>: The daughter of a tech mogul questions her memories about her mother's death after being kidnapped by a stranger.</p>
+					<p><b>Starring </b>: Aja Naomi King, Gary Dourdan, Colm Feore, Jeanette Samano, Amanda Plummer, and David Clennon.</p>
+					<p><b>Director</b>: Jose Nestor Marquez</p>
+					<p><b>Writers</b>: Elissa Matsueda and Jose Nestor Marquez</p>
+				</div>			
+			</div>
+			<div id="footer">
+				<center> a division of Comcast NBCUniversal </center>
+			</div>	
+		</div>
+
+	<script type="text/javascript">
+
+			function openOverlay(olEl) {
+				$oLay = $(olEl);
+				
+				if ($('#overlay-shade').length == 0)
+					$('body').prepend('<div id="overlay-shade"></div>');
+
+				$('#overlay-shade').fadeTo(300, 0.6, function() {
+					var props = {
+						oLayWidth       : $oLay.width(),
+						scrTop          : $(window).scrollTop(),
+						viewPortWidth   : $(window).width()
+					};
+
+					var leftPos = (props.viewPortWidth - props.oLayWidth) / 2;
+
+					$oLay
+						.css({
+							display : 'block',
+							opacity : 0,
+							top : '-=300',
+							left : leftPos+'px'
+						})
+						.animate({
+							top : props.scrTop + 40,
+							opacity : 1
+						}, 600);
+				});
+			}
+			
+			function closeOverlay() {
+				$('.overlay').animate({
+					top : '-=300',
+					opacity : 0
+				}, 400, function() {
+					$('#overlay-shade').fadeOut(300);
+					$(this).css('display','none');
+				});
+			}
+			
+			$('#overlay-shade, .overlay a').live('click', function(e) {
+				closeOverlay();
+				if ($(this).attr('href') == '#') e.preventDefault();
+			});
+				
+			
+			$('#overlaylaunch').click(function(e) {		
+			   openOverlay('#overlay-inAbox');
+				e.preventDefault();
+			});
+			
+		 </script>				
+	</body>
+</html>
